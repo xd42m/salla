@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>نموذج البيانات</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      background: #f9f9f9;
+      padding: 40px;
+    }
+    h2 {
+      color: #333;
+    }
+    input, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      background: #25D366; /* لون واتساب */
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #128C7E;
+    }
+  </style>
+</head>
+<body>
+
+<h2>تعبئة بياناتك</h2>
+
+<input type="text" id="name" placeholder="الاسم">
+<input type="number" id="bus" placeholder="عدد مقاعد الباص">
+<input type="number" id="rooms" placeholder="عدد الغرف">
+<input type="text" id="id" placeholder="رقم الهوية">
+<input type="text" id="phone" placeholder="رقم الجوال">
+
+<button onclick="sendWhatsApp()">إرسال على واتساب</button>
+
+<script>
+function sendWhatsApp() {
+  // قراءة القيم من الحقول
+  const name = document.getElementById("name").value;
+  const bus = document.getElementById("bus").value;
+  const rooms = document.getElementById("rooms").value;
+  const id = document.getElementById("id").value;
+  const phone = document.getElementById("phone").value;
+
+  // إنشاء الرسالة
+  const message =
+`الاسم: ${name}
+عدد مقاعد الباص: ${bus}
+عدد الغرف: ${rooms}
+رقم الهوية: ${id}
+رقم الجوال: ${phone}`;
+
+  // رابط واتساب
+  const waNumber = "966553113918"; // رقمك بدون 0 وبداية السعودية 966
+  const url = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(message);
+
+  // فتح الرابط في تبويب جديد
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
